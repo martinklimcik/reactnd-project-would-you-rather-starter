@@ -1,24 +1,25 @@
 import { Component } from "react";
 import { NavLink } from "react-router-dom";
+import "./components.css";
+
+const NavButton = (props) => {
+  return (
+    <NavLink exact to={props.to} className="nav btn" activeClassName="active">
+      {props.children}
+    </NavLink>
+  );
+};
 
 class NavBar extends Component {
   render() {
     return (
-      <div className="nav-bar">
-        <NavLink to="/" className="nav-button">
-          Home
-        </NavLink>
-        <NavLink to="/new" className="nav-button">
-          Create
-        </NavLink>
-        <NavLink to="/leaderboard" className="nav-button">
-          Leader Board
-        </NavLink>
-        Logged in user
-        <NavLink to="/login" className="nav-button">
-          Logout
-        </NavLink>
-      </div>
+      <nav>
+        <NavButton to="/">Home</NavButton>
+        <NavButton to="/new">Create</NavButton>
+        <NavButton to="/leaderboard">Leader Board</NavButton>
+        <div className="nav">Logged in user</div>
+        <NavButton to="/login">Logout</NavButton>
+      </nav>
     );
   }
 }

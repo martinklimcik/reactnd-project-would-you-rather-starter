@@ -7,15 +7,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <nav>
-          <NavBar />
-        </nav>
+        <NavBar />
         <Switch>
           <Route path="/login">
             <Views.Login />
-          </Route>
-          <Route exact path="/">
-            <Views.Home />
           </Route>
           <Route path="/new">
             <Views.New />
@@ -25,6 +20,9 @@ function App() {
           </Route>
           <Route path="/poll">
             <Views.Poll />
+          </Route>
+          <Route exact path="/">
+            <Views.Home />
           </Route>
           <Route path="*">
             <Views.NotFound />
