@@ -1,0 +1,9 @@
+.login-form {
+    position:static
+}
+
+.view {
+    position: relative;
+    align-content: center;
+    text-align: center;
+}

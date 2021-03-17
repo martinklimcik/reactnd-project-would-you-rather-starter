@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Dropdown from "../Dropdown";
 import Button from "../Button";
+import "./views.css";
 
 const testusers = [
   { label: "Mates", value: "mates" },
@@ -11,13 +12,13 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h1>Login</h1>
-        </div>
-        <form>
+        <h1>Login</h1>
+        <form className="login-form">
           <Dropdown options={testusers} />
           <Button text="Add new" />
-          <Button text="Confirm" />
+          <div>
+            <Button text="Confirm" />
+          </div>
         </form>
       </div>
     );

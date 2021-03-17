@@ -2,6 +2,8 @@ import { Component } from "react";
 import { NavLink } from "react-router-dom";
 import "./components.css";
 
+const isLoggedIn = true;
+
 const NavButton = (props) => {
   return (
     <NavLink exact to={props.to} className="nav btn" activeClassName="active">
@@ -12,7 +14,7 @@ const NavButton = (props) => {
 
 class NavBar extends Component {
   render() {
-    return (
+    return isLoggedIn ? (
       <nav>
         <NavButton to="/">Home</NavButton>
         <NavButton to="/new">Create</NavButton>
@@ -20,7 +22,7 @@ class NavBar extends Component {
         <div className="nav">Logged in user</div>
         <NavButton to="/login">Logout</NavButton>
       </nav>
-    );
+    ) : null;
   }
 }
 
