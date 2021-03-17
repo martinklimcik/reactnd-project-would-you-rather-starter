@@ -18,7 +18,7 @@ function App() {
           <Route path="/leaderboard">
             <Views.LeaderBoard />
           </Route>
-          <Route path="/poll">
+          <Route path="/question">
             <Views.Poll />
           </Route>
           <Route exact path="/">

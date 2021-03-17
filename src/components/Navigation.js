@@ -19,6 +19,11 @@ class NavBar extends Component {
         <NavButton to="/">Home</NavButton>
         <NavButton to="/new">Create</NavButton>
         <NavButton to="/leaderboard">Leader Board</NavButton>
+        <NavButton to="/question/8xf0y6ziyjabvozdd253nd">
+          Question
+        </NavButton>{" "}
+        {/* TODO: delete*/}
+        {/* TODO: Separate navigation buttons from user info and logout button */}
         <div className="nav">Logged in user</div>
         <NavButton to="/login">Logout</NavButton>
       </nav>

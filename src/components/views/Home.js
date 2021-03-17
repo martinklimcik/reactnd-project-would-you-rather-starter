@@ -27,10 +27,9 @@ class PollList extends Component {
   }
 }
 
+// TODO: move to helper file
 function isAnswered(poll, user) {
-  const x = user.answers[poll.id];
-
-  return x != null;
+  return user.answers[poll.id] != null;
 }
 
 class Home extends Component {
