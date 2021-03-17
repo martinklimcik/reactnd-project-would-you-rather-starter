@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./views.css";
 
 class LeaderBoard extends Component {
   render() {

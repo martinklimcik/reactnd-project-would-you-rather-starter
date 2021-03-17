@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./views.css";
 
 class New extends Component {
   render() {
