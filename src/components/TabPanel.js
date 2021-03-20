@@ -2,9 +2,11 @@ import { Component } from "react";
 import "./components.css";
 
 const TabButton = (props) => {
+  let cls = "button tab-button";
+  if (props.active) cls += " tab-active";
   return (
     <button
-      className="tab-button"
+      className={cls}
       type="button"
       onClick={() => {
         props.changeTab(props.label);
@@ -26,15 +28,16 @@ class TabPanel extends Component {
     //console.log(this.props);
     return (
       <div className="tab-panel">
-        <ol className="tab-buttons">
+        <div className="tab-buttons">
           {this.props.children.map((tab) => (
             <TabButton
               key={tab.props.label}
               label={tab.props.label}
               changeTab={this.changeTab}
+              active={this.state.activeTab === tab.props.label}
             />
           ))}
-        </ol>
+        </div>
         <div className="tab-content">
           {this.props.children.map((tab) => {
             return tab.props.label === this.state.activeTab

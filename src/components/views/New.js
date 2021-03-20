@@ -6,15 +6,15 @@ import "./views.css";
 class New extends Component {
   render() {
     return (
-      <div>
+      <div className="view">
         <h1>Create New Poll</h1>
-        <p>Would You Rather</p>
+        <p className="wyr">Would You Rather</p>
         <form>
-          <Input placeholder="Answer A" />
-          <p>OR</p>
-          <Input placeholder="Answer B" />
+          <Input placeholder="First option" />
+          <p className="wyr">OR</p>
+          <Input placeholder="Second option" />
           <div>
-            <Button text="Submit" />
+            <Button text="Submit" cls="submit" />
           </div>
         </form>
       </div>

@@ -3,7 +3,9 @@ import "./components.css";
 
 class Input extends Component {
   render() {
-    return <input placeholder={this.props.placeholder}></input>;
+    return (
+      <input placeholder={this.props.placeholder} className="input"></input>
+    );
   }
 }
 

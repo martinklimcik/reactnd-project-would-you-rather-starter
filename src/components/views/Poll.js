@@ -19,16 +19,16 @@ const AnsweredQuestion = (props) => {
   const yourAnswer = getAnswer(props.question, currentuser);
 
   return (
-    <div>
+    <div className="view">
       <h1>Question View</h1>
       <p>Author: {users[props.question.author].name}</p>
       <p>Avatar: TODO{/* TODO: Avatar */}</p>
-      <p>Option A: {props.question.optionOne.text}</p>
+      <p className="question">Option A: {props.question.optionOne.text}</p>
       <div>
         Answered {votesA} of {totalVotes} ({(votesA / totalVotes) * 100}%)
       </div>
       <div>This was {yourAnswer !== "optionOne" ? "NOT" : ""} your answer</div>
-      <p>Option B: {props.question.optionTwo.text}</p>
+      <p className="question">Option B: {props.question.optionTwo.text}</p>
       <div>
         Answered {votesB} of {totalVotes} ({(votesB / totalVotes) * 100}%)
       </div>
@@ -42,7 +42,7 @@ const AnsweredQuestion = (props) => {
 
 const UnansweredQuestion = (props) => {
   return (
-    <div>
+    <div className="view">
       <h1>Question View</h1>
       {users[props.question.author].id === currentuser.id ? (
         <p>
@@ -56,12 +56,12 @@ const UnansweredQuestion = (props) => {
           asked:
         </p>
       )}
-      <p>Would You Rather</p>
-      <div>
+      <p className="wyr">Would You Rather</p>
+      <div className="question">
         <Button text={props.question.optionOne.text} />
       </div>
-      <p>OR</p>
-      <div>
+      <p className="wyr">OR</p>
+      <div className="question">
         <Button text={props.question.optionTwo.text} />
       </div>
       <div>

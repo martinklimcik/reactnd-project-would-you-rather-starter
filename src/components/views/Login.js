@@ -11,13 +11,13 @@ const testusers = [
 class Login extends Component {
   render() {
     return (
-      <div>
+      <div className="view">
         <h1>Login</h1>
         <form className="login-form">
           <Dropdown options={testusers} />
           <Button text="Add new" />
           <div>
-            <Button text="Confirm" />
+            <Button text="Confirm" cls="submit" />
           </div>
         </form>
       </div>

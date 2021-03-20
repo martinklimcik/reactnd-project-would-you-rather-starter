@@ -1,16 +1,20 @@
 import { Component } from "react";
 import TabPanel from "../TabPanel";
-import { questions, currentuser } from "./testdata";
+import { questions, currentuser, users } from "./testdata";
+import "./views.css";
 
 // TODO: show when question was asked (parse from timestamp)
 const PollItem = (props) => {
   return (
-    <div>
-      <div>{props.item.author} asks</div>
+    <div className="list-item">
+      <div>{users[props.item.author].name} asks</div>
       <div>
-        WYR: {props.item.optionOne.text} OR {props.item.optionTwo.text}
+        <span className="wyr">Would You Rather</span>
+        <p className="question">{props.item.optionOne.text}</p>
+        <span>OR</span>
+        <p className="question">{props.item.optionTwo.text}</p>
       </div>
-      <button>View</button>
+      <button className="button view-btn">View</button>
     </div>
   );
 };
@@ -18,11 +22,11 @@ const PollItem = (props) => {
 class PollList extends Component {
   render() {
     return (
-      <ul>
+      <div className="list">
         {this.props.items.map((item) => (
           <PollItem key={item.id} item={item} />
         ))}
-      </ul>
+      </div>
     );
   }
 }
@@ -45,14 +49,14 @@ class Home extends Component {
       <div className="view">
         <h1>Home View</h1>
         <TabPanel>
-          <div label="Answered">
-            <PollList
-              items={items.filter((poll) => isAnswered(poll, currentuser))}
-            />
-          </div>
           <div label="Unanswered">
             <PollList
               items={items.filter((poll) => !isAnswered(poll, currentuser))}
+            />
+          </div>
+          <div label="Answered">
+            <PollList
+              items={items.filter((poll) => isAnswered(poll, currentuser))}
             />
           </div>
         </TabPanel>

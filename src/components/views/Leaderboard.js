@@ -9,21 +9,23 @@ const UserItem = (props) => {
   // TODO: pagination
   // TODO: highlight of currently logged in user
   return (
-    <div>
-      <div>{props.user.name}</div>
-      <div>Answered questions: {props.user.answers}</div>
-      <div>Created questions: {props.user.questions}</div>
+    <div className="list-item user-item">
+      <div className="user-item-name">{props.user.name}</div>
+      <div className="user-item-data">
+        <div>Answered questions: {props.user.answers}</div>
+        <div>Created questions: {props.user.questions}</div>
+      </div>
     </div>
   );
 };
 
 const UserList = (props) => {
   return (
-    <ul>
+    <div className="list">
       {props.users.map((user) => (
         <UserItem key={user.id} user={user} />
       ))}
-    </ul>
+    </div>
   );
 };
 
