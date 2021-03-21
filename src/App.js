@@ -7,6 +7,7 @@ import { handleInitialData } from "./actions/init";
 import { connect } from "react-redux";
 
 // TODO: propTypes
+// TODO: imports cleanup
 
 class App extends Component {
   componentDidMount() {
@@ -23,24 +24,12 @@ class App extends Component {
         {this.props.logged ? <NavBar /> : <Redirect to="/login" />}
         <div className="App">
           <Switch>
-            <Route path="/login">
-              <Views.Login />
-            </Route>
-            <Route path="/new">
-              <Views.New />
-            </Route>
-            <Route path="/leaderboard">
-              <Views.LeaderBoard />
-            </Route>
-            <Route path="/question">
-              <Views.Poll />
-            </Route>
-            <Route exact path="/">
-              <Views.Home />
-            </Route>
-            <Route path="*">
-              <Views.NotFound />
-            </Route>
+            <Route path="/login" component={Views.Login} />
+            <Route path="/new" component={Views.New} />
+            <Route path="/leaderboard" component={Views.LeaderBoard} />
+            <Route path="/question/:id" component={Views.Poll} />
+            <Route exact path="/" component={Views.Home} />
+            <Route path="*" component={Views.NotFound} />
           </Switch>
         </div>
       </BrowserRouter>

@@ -1,62 +1,63 @@
 import { Component } from "react";
+import { connect, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { isPollAnswered } from "../../utils/helpers";
 import TabPanel from "../TabPanel";
-import { questions, currentuser, users } from "./testdata";
 import "./views.css";
 
 // TODO: show when question was asked (parse from timestamp)
-const PollItem = (props) => {
+const QuestionItem = (props) => {
+  const users = useSelector((state) => state.users);
+  const { author, optionOne, optionTwo, id } = props.item;
+
   return (
     <div className="list-item">
-      <div>{users[props.item.author].name} asks</div>
+      <div>{users[author].name} asks</div>
       <div>
         <span className="wyr">Would You Rather</span>
-        <p className="question">{props.item.optionOne.text}</p>
+        <p className="question">{optionOne.text}</p>
         <span>OR</span>
-        <p className="question">{props.item.optionTwo.text}</p>
+        <p className="question">{optionTwo.text}</p>
       </div>
-      <button className="button view-btn">View</button>
+      <Link to={`/question/${id}`}>
+        <button className="button view-btn">View</button>
+      </Link>
     </div>
   );
 };
 
-class PollList extends Component {
+class QuestionList extends Component {
   render() {
     return (
       <div className="list">
         {this.props.items.map((item) => (
-          <PollItem key={item.id} item={item} />
+          <QuestionItem key={item.id} item={item} />
         ))}
       </div>
     );
   }
 }
 
-// TODO: move to helper file
-function isAnswered(poll, user) {
-  return user.answers[poll.id] != null;
-}
-
 class Home extends Component {
   render() {
-    // TODO: !!! prevod objektu na pole a sortovanie podla casu
-    let items = [];
-    for (const item in questions) {
-      items.push(questions[item]);
-    }
-    items.sort((a, b) => a.timestamp - b.timestamp);
+    const { questionList, authedUser } = this.props;
 
     return (
       <div className="view">
         <h1>Home View</h1>
         <TabPanel>
           <div label="Unanswered">
-            <PollList
-              items={items.filter((poll) => !isAnswered(poll, currentuser))}
+            <QuestionList
+              items={questionList.filter(
+                (poll) => !isPollAnswered(poll, authedUser)
+              )}
             />
           </div>
           <div label="Answered">
-            <PollList
-              items={items.filter((poll) => isAnswered(poll, currentuser))}
+            <QuestionList
+              items={questionList.filter((poll) =>
+                isPollAnswered(poll, authedUser)
+              )}
             />
           </div>
         </TabPanel>
@@ -65,4 +66,15 @@ class Home extends Component {
   }
 }
 
-export default Home;
+function mapStateToProps({ questions, authedUser }) {
+  // parse list of questions from object to array and sort by timestamp
+  let questionList = [];
+  for (const id in questions) {
+    questionList.push(questions[id]);
+  }
+  questionList.sort((a, b) => a.timestamp - b.timestamp);
+
+  return { questionList, authedUser };
+}
+
+export default connect(mapStateToProps)(Home);
