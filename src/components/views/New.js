@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import Button from "../Button";
 import Input from "../Input";
 import "./views.css";
@@ -22,4 +23,8 @@ class New extends Component {
   }
 }
 
-export default New;
+function mapStateToProps(test) {
+  return {};
+}
+
+export default connect(mapStateToProps)(New);
