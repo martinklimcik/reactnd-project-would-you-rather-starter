@@ -6,6 +6,8 @@ import { Component } from "react";
 import { handleInitialData } from "./actions/init";
 import { connect } from "react-redux";
 
+// TODO: propTypes
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData()).then(() => {
