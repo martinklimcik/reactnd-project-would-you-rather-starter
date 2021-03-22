@@ -16,7 +16,8 @@ import { connect } from "react-redux";
   Show "Vote" instead of View on unanswered questions
   testing
   ---cleanup:
-  css
+  css - look
+  css - fix elements for resized(smaller) window
   imports cleanup
   todos cleanup
 */
