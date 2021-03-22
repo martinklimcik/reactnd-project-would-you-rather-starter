@@ -24,6 +24,7 @@ class New extends Component {
     this.setState({ optionOne: "", optionTwo: "", confirmation: true });
   };
 
+  // TODO dispatch info to users
   // TODO: submit button disabled css
   // TODO: state.confirmation to show confirmation of question successfully added and button to go to voting screen for it
   render() {

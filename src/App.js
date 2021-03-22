@@ -6,8 +6,20 @@ import { Component } from "react";
 import { handleInitialData } from "./actions/init";
 import { connect } from "react-redux";
 
-// TODO: propTypes
-// TODO: imports cleanup
+/* TODO progress
+  ---features:
+  poll view full functionality
+  add new user
+  avatars
+  proptypes
+  questions - show You instead of Name when author is authedUser
+  Show "Vote" instead of View on unanswered questions
+  testing
+  ---cleanup:
+  css
+  imports cleanup
+  todos cleanup
+*/
 
 class App extends Component {
   componentDidMount() {

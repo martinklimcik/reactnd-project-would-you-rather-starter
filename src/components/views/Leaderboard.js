@@ -1,7 +1,7 @@
 import { Component } from "react";
 import TabPanel from "../TabPanel";
 import "./views.css";
-import { users } from "./testdata";
+import { connect } from "react-redux";
 
 const UserItem = (props) => {
   // TODO: add Avatar
@@ -31,33 +31,15 @@ const UserList = (props) => {
 
 class LeaderBoard extends Component {
   render() {
-    /// !!! prevod na pole, dve sortovania podla poctu otazok a odpovedi
-    let byanswers = [];
-    let byquestions = [];
-    for (const item in users) {
-      const _user = users[item];
-      const new_user = {
-        id: _user.id,
-        name: _user.name,
-        answers: Object.keys(_user.answers).length,
-        questions: _user.questions.length,
-      };
-      byanswers.push(new_user);
-      byquestions.push(new_user);
-    }
-    byanswers.sort((a, b) => b.answers - a.answers);
-    byquestions.sort((a, b) => b.questions - a.questions);
-    /// !!!
-
     return (
       <div className="view">
         <h1>LeaderBoard View</h1>
         <TabPanel>
           <div label="By Answered Questions">
-            <UserList users={byanswers} />
+            <UserList users={this.props.listByAnswers} />
           </div>
           <div label="By Created Questions">
-            <UserList users={byquestions} />
+            <UserList users={this.props.listByQuestions} />
           </div>
         </TabPanel>
       </div>
@@ -65,4 +47,24 @@ class LeaderBoard extends Component {
   }
 }
 
-export default LeaderBoard;
+function mapStateToProps({ users }) {
+  let listByAnswers = [];
+  let listByQuestions = [];
+  for (const item in users) {
+    const _user = users[item];
+    const new_user = {
+      id: _user.id,
+      name: _user.name,
+      answers: Object.keys(_user.answers).length,
+      questions: _user.questions.length,
+    };
+    listByAnswers.push(new_user);
+    listByQuestions.push(new_user);
+  }
+  listByAnswers.sort((a, b) => b.answers - a.answers);
+  listByQuestions.sort((a, b) => b.questions - a.questions);
+
+  return { listByAnswers, listByQuestions };
+}
+
+export default connect(mapStateToProps)(LeaderBoard);
