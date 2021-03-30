@@ -1,11 +1,12 @@
 import { Component } from "react";
 import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { isPollAnswered } from "../../utils/helpers";
+import { isPollAnswered, sortQuestions } from "../../utils/helpers";
 import TabPanel from "../TabPanel";
 import "./views.css";
 
 // TODO: show when question was asked (parse from timestamp)
+// TODO: empty list
 const QuestionItem = (props) => {
   const users = useSelector((state) => state.users);
   const { author, optionOne, optionTwo, id } = props.item;
@@ -68,12 +69,7 @@ class Home extends Component {
 
 function mapStateToProps({ questions, authedUser }) {
   // parse list of questions from object to array and sort by timestamp
-  let questionList = [];
-  for (const id in questions) {
-    questionList.push(questions[id]);
-  }
-  questionList.sort((a, b) => a.timestamp - b.timestamp);
-
+  let questionList = sortQuestions(questions);
   return { questionList, authedUser };
 }
 

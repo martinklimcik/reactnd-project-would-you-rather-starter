@@ -1,13 +1,14 @@
 import "./views.css";
 import NotFound from "./NotFound";
-import Button from "../Button";
 import { connect } from "react-redux";
+import { handleAnswerQuestion } from "../../actions/questions";
+import { isPollAnswered, sortQuestions } from "../../utils/helpers";
+import { Link } from "react-router-dom";
 
 const AnsweredQuestion = (props) => {
   const votesA = props.question.optionOne.votes.length;
   const votesB = props.question.optionTwo.votes.length;
   const totalVotes = votesA + votesB;
-
   return (
     <div className="view">
       <h1>Question View</h1>
@@ -28,13 +29,24 @@ const AnsweredQuestion = (props) => {
         This was {props.answer !== "optionTwo" ? "NOT" : ""} your answer
       </div>
       <div>
-        <Button text="Answer another question" />
+        {props.nextQuestionId == null ? (
+          <p>All questions Answered!</p>
+        ) : (
+          <Link to={`/question/${props.nextQuestionId}`}>
+            <button className="button">Answer another question</button>
+          </Link>
+        )}
       </div>
     </div>
   );
 };
 
 const UnansweredQuestion = (props) => {
+  function handleAnswer(answer) {
+    const { dispatch } = props;
+    dispatch(handleAnswerQuestion(props.question.id, answer));
+  }
+
   return (
     <div className="view">
       <h1>Question View</h1>
@@ -50,20 +62,17 @@ const UnansweredQuestion = (props) => {
         </p>
       }
       <p className="wyr">Would You Rather</p>
-      <form>
-        <div className="question">
-          <Button text={props.question.optionOne.text} />
-        </div>
-        <p className="wyr">OR</p>
-        <div className="question">
-          <Button text={props.question.optionTwo.text} />
-        </div>
-        <div>
-          <button className="button submit" type="submit">
-            Submit
-          </button>
-        </div>
-      </form>
+      <div className="question">
+        <button className="button" onClick={() => handleAnswer("optionOne")}>
+          {props.question.optionOne.text}
+        </button>
+      </div>
+      <p className="wyr">OR</p>
+      <div className="question">
+        <button className="button" onClick={() => handleAnswer("optionTwo")}>
+          {props.question.optionTwo.text}
+        </button>
+      </div>
     </div>
   );
 };
@@ -76,9 +85,15 @@ const Poll = (props) => {
       question={props.question}
       author={props.author}
       answer={props.answer}
+      dispatch={props.dispatch}
+      nextQuestionId={props.nextQuestionId}
     />
   ) : (
-    <UnansweredQuestion question={props.question} author={props.author} />
+    <UnansweredQuestion
+      question={props.question}
+      author={props.author}
+      dispatch={props.dispatch}
+    />
   );
 };
 
@@ -88,8 +103,11 @@ function mapStateToProps({ questions, users, authedUser }, props) {
   const question = questions[id];
   const answer = authedUser == null ? null : users[authedUser].answers[id];
   const author = question == null ? null : users[question.author];
-
-  return { question, author, answer };
+  const nextQuestion = sortQuestions(questions).find(
+    (poll) => !isPollAnswered(poll, authedUser)
+  );
+  const nextQuestionId = nextQuestion != null ? nextQuestion.id : null;
+  return { question, author, answer, nextQuestionId };
 }
 
 export default connect(mapStateToProps)(Poll);

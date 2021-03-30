@@ -8,12 +8,12 @@ import { connect } from "react-redux";
 
 /* TODO progress
   ---features:
-  poll view full functionality
   add new user
   avatars
   proptypes
   questions - show You instead of Name when author is authedUser
   Show "Vote" instead of View on unanswered questions
+  test App render called on every view - get data from db on each view rerender (componentDidMount?)
   testing
   ---cleanup:
   css - look
