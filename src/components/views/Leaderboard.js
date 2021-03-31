@@ -2,6 +2,7 @@ import { Component } from "react";
 import TabPanel from "../TabPanel";
 import "./views.css";
 import { connect } from "react-redux";
+import Avatar from "../Avatar";
 
 const UserItem = (props) => {
   // TODO: add Avatar
@@ -10,7 +11,10 @@ const UserItem = (props) => {
   // TODO: highlight of currently logged in user
   return (
     <div className="list-item user-item">
-      <div className="user-item-name">{props.user.name}</div>
+      <div className="user-item-name">
+        <Avatar src={props.user.avatarURL} />
+        {props.user.name}
+      </div>
       <div className="user-item-data">
         <div>Answered questions: {props.user.answers}</div>
         <div>Created questions: {props.user.questions}</div>
@@ -57,6 +61,7 @@ function mapStateToProps({ users }) {
       name: _user.name,
       answers: Object.keys(_user.answers).length,
       questions: _user.questions.length,
+      avatarURL: _user.avatarURL,
     };
     listByAnswers.push(new_user);
     listByQuestions.push(new_user);

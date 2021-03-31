@@ -1,6 +1,5 @@
 import { Component } from "react";
 import Dropdown from "../Dropdown";
-import Button from "../Button";
 import "./views.css";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../../actions/authedUser";
@@ -34,7 +33,6 @@ class Login extends Component {
             options={this.props.users}
             onChange={this.handleSelection}
           />
-          <Button text="Add new" /> {/* TODO: create new user functionality */}
           <div>
             {/* TODO: disabled visual */}
             <button

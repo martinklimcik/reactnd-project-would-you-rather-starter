@@ -2,6 +2,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
+import Avatar from "./Avatar";
 import "./components.css";
 
 const NavButton = (props) => {
@@ -19,7 +20,7 @@ class NavBar extends Component {
   };
 
   render() {
-    const { authedUserName } = this.props;
+    const { authedUserName, authedAvatar } = this.props;
     return (
       <nav>
         <NavButton to="/">Home</NavButton>
@@ -30,7 +31,10 @@ class NavBar extends Component {
         </NavButton> */}
         {/* TODO: delete*/}
         {/* TODO: Separate navigation buttons from user info and logout button */}
-        <div className="nav user">Logged in: {authedUserName}</div>
+        <div className="nav user">
+          <Avatar src={authedAvatar} />
+          {authedUserName}
+        </div>
         <button className="nav btn" onClick={this.handleLogout}>
           Logout
         </button>
@@ -41,7 +45,8 @@ class NavBar extends Component {
 
 function mapStateToProps({ users, authedUser }) {
   const authedUserName = users[authedUser].name;
-  return { authedUserName };
+  const authedAvatar = users[authedUser].avatarURL;
+  return { authedUserName, authedAvatar };
 }
 
 export default connect(mapStateToProps)(NavBar);

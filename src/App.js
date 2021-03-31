@@ -8,8 +8,6 @@ import { connect } from "react-redux";
 
 /* TODO progress
   ---features:
-  add new user
-  avatars
   proptypes
   questions - show You instead of Name when author is authedUser
   Show "Vote" instead of View on unanswered questions
@@ -20,6 +18,7 @@ import { connect } from "react-redux";
   css - fix elements for resized(smaller) window
   imports cleanup
   todos cleanup
+  console.logs cleanup
 */
 
 class App extends Component {

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { handleAnswerQuestion } from "../../actions/questions";
 import { isPollAnswered, sortQuestions } from "../../utils/helpers";
 import { Link } from "react-router-dom";
+import Avatar from "../Avatar";
 
 const AnsweredQuestion = (props) => {
   const votesA = props.question.optionOne.votes.length;
@@ -12,8 +13,9 @@ const AnsweredQuestion = (props) => {
   return (
     <div className="view">
       <h1>Question View</h1>
-      <p>Author: {props.author.name}</p>
-      <p>Avatar: TODO{/* TODO: Avatar */}</p>
+      <p>
+        Author: <Avatar src={props.author.avatarURL} /> {props.author.name}
+      </p>
       <p className="question">Option A: {props.question.optionOne.text}</p>
       <div>
         Answered {votesA} of {totalVotes} ({(votesA / totalVotes) * 100}%)
@@ -57,8 +59,7 @@ const UnansweredQuestion = (props) => {
           ) have asked:
         </p>
       ) : */ <p>
-          {props.author.name} ({props.author.id /* TODO: Avatar instead of ID*/}
-          ) asked:
+          <Avatar src={props.author.avatarURL} /> {props.author.name} asked:
         </p>
       }
       <p className="wyr">Would You Rather</p>

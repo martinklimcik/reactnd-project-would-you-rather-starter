@@ -2,6 +2,7 @@ import { Component } from "react";
 import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { isPollAnswered, sortQuestions } from "../../utils/helpers";
+import Avatar from "../Avatar";
 import TabPanel from "../TabPanel";
 import "./views.css";
 
@@ -13,7 +14,10 @@ const QuestionItem = (props) => {
 
   return (
     <div className="list-item">
-      <div>{users[author].name} asks</div>
+      <div>
+        <Avatar src={users[author].avatarURL} />
+        {users[author].name} asks
+      </div>
       <div>
         <span className="wyr">Would You Rather</span>
         <p className="question">{optionOne.text}</p>
