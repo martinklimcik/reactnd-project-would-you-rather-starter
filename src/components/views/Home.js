@@ -5,6 +5,7 @@ import { isPollAnswered, sortQuestions } from "../../utils/helpers";
 import Avatar from "../Avatar";
 import TabPanel from "../TabPanel";
 import "./views.css";
+import PropTypes from "prop-types";
 
 // TODO: show when question was asked (parse from timestamp)
 // TODO: empty list
@@ -31,6 +32,10 @@ const QuestionItem = (props) => {
   );
 };
 
+QuestionItem.propTypes = {
+  item: PropTypes.object.isRequired,
+};
+
 class QuestionList extends Component {
   render() {
     return (
@@ -42,6 +47,10 @@ class QuestionList extends Component {
     );
   }
 }
+
+QuestionList.propTypes = {
+  items: PropTypes.array.isRequired,
+};
 
 class Home extends Component {
   render() {
@@ -71,8 +80,12 @@ class Home extends Component {
   }
 }
 
+Home.propTypes = {
+  questionList: PropTypes.array.isRequired,
+  authedUser: PropTypes.string,
+};
+
 function mapStateToProps({ questions, authedUser }) {
-  // parse list of questions from object to array and sort by timestamp
   let questionList = sortQuestions(questions);
   return { questionList, authedUser };
 }

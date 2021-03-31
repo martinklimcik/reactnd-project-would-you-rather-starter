@@ -5,6 +5,7 @@ import { handleAnswerQuestion } from "../../actions/questions";
 import { isPollAnswered, sortQuestions } from "../../utils/helpers";
 import { Link } from "react-router-dom";
 import Avatar from "../Avatar";
+import PropTypes from "prop-types";
 
 const AnsweredQuestion = (props) => {
   const votesA = props.question.optionOne.votes.length;
@@ -43,6 +44,14 @@ const AnsweredQuestion = (props) => {
   );
 };
 
+AnsweredQuestion.propTypes = {
+  question: PropTypes.object.isRequired,
+  author: PropTypes.object.isRequired,
+  answer: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  nextQuestionId: PropTypes.string.isRequired,
+};
+
 const UnansweredQuestion = (props) => {
   function handleAnswer(answer) {
     const { dispatch } = props;
@@ -78,6 +87,12 @@ const UnansweredQuestion = (props) => {
   );
 };
 
+UnansweredQuestion.propTypes = {
+  question: PropTypes.object.isRequired,
+  author: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
+
 const Poll = (props) => {
   return props.question == null ? (
     <NotFound />
@@ -96,6 +111,13 @@ const Poll = (props) => {
       dispatch={props.dispatch}
     />
   );
+};
+
+Poll.propTypes = {
+  question: PropTypes.object.isRequired,
+  author: PropTypes.object,
+  answer: PropTypes.string,
+  nextQuestionId: PropTypes.string,
 };
 
 function mapStateToProps({ questions, users, authedUser }, props) {

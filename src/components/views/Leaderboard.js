@@ -3,9 +3,9 @@ import TabPanel from "../TabPanel";
 import "./views.css";
 import { connect } from "react-redux";
 import Avatar from "../Avatar";
+import PropTypes from "prop-types";
 
 const UserItem = (props) => {
-  // TODO: add Avatar
   // TODO: show answered/created x questions of y total (%)
   // TODO: pagination
   // TODO: highlight of currently logged in user
@@ -23,6 +23,10 @@ const UserItem = (props) => {
   );
 };
 
+UserItem.propTypes = {
+  user: PropTypes.object.isRequired,
+};
+
 const UserList = (props) => {
   return (
     <div className="list">
@@ -31,6 +35,10 @@ const UserList = (props) => {
       ))}
     </div>
   );
+};
+
+UserList.propTypes = {
+  users: PropTypes.array.isRequired,
 };
 
 class LeaderBoard extends Component {
@@ -51,7 +59,14 @@ class LeaderBoard extends Component {
   }
 }
 
+LeaderBoard.propTypes = {
+  listByAnswers: PropTypes.array.isRequired,
+  listByQuestions: PropTypes.array.isRequired,
+};
+
 function mapStateToProps({ users }) {
+  // Create separate list for each order (by number of questions and number of answers)
+  // Then sort them accordingly
   let listByAnswers = [];
   let listByQuestions = [];
   for (const item in users) {

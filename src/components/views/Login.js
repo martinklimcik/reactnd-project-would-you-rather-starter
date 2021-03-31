@@ -4,6 +4,7 @@ import "./views.css";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../../actions/authedUser";
 import { Redirect, withRouter } from "react-router";
+import PropTypes from "prop-types";
 
 class Login extends Component {
   state = { selectedUser: null, loggedIn: false };
@@ -48,6 +49,10 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  users: PropTypes.array.isRequired,
+};
 
 function mapStateToProps({ users }) {
   let userList = [];

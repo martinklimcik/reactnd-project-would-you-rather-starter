@@ -14,17 +14,12 @@ class New extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.group("New.handleSubmit");
-    console.log(this.state.optionOne);
-    console.log(this.state.optionTwo);
-    console.groupEnd();
     const { optionOne, optionTwo } = this.state;
     const { dispatch } = this.props;
     dispatch(handleAddQuestion(optionOne, optionTwo));
     this.setState({ optionOne: "", optionTwo: "", confirmation: true });
   };
 
-  // TODO dispatch info to users
   // TODO: submit button disabled css
   // TODO: state.confirmation to show confirmation of question successfully added and button to go to voting screen for it
   render() {
@@ -57,8 +52,4 @@ class New extends Component {
   }
 }
 
-function mapStateToProps(test) {
-  return {};
-}
-
-export default connect(mapStateToProps)(New);
+export default connect()(New);
