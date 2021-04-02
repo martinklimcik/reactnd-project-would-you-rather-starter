@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 
 const UserItem = (props) => {
   // TODO: pagination
-  // TODO: highlight of currently logged in user
   return (
     <div className="list-item user-item">
       {props.user.current ? <div>CURRENT USER</div> : null}

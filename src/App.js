@@ -9,10 +9,9 @@ import PropTypes from "prop-types";
 
 /* TODO progress
   ---cleanup:
-  todos cleanup
-  console.logs cleanup
   css - look
   css - fix elements for resized(smaller) window
+    todos cleanup
   testing https://review.udacity.com/#!/rubrics/1567/view
 */
 

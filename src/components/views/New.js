@@ -16,12 +16,18 @@ class New extends Component {
     e.preventDefault();
     const { optionOne, optionTwo } = this.state;
     const { dispatch } = this.props;
-    dispatch(handleAddQuestion(optionOne, optionTwo));
-    this.setState({ optionOne: "", optionTwo: "", confirmation: true });
+    dispatch(handleAddQuestion(optionOne, optionTwo)).then(() => {
+      this.setState({ confirmation: true });
+      this.confirmationTimeout();
+    });
+    this.setState({ optionOne: "", optionTwo: "" });
+  };
+
+  confirmationTimeout = () => {
+    setTimeout(() => this.setState({ confirmation: false }), 2000);
   };
 
   // TODO: submit button disabled css
-  // TODO: state.confirmation to show confirmation of question successfully added and button to go to voting screen for it
   render() {
     const submitDisabled =
       this.state.optionOne === "" && this.state.optionTwo === "";
@@ -34,12 +40,14 @@ class New extends Component {
             placeholder="First option"
             className="input"
             onChange={this.handleOptionOne}
+            value={this.state.optionOne}
           ></input>
           <p className="wyr">OR</p>
           <input
             placeholder="Second option"
             className="input"
             onChange={this.handleOptionTwo}
+            value={this.state.optionTwo}
           ></input>
           <div>
             <button type="submit" className="submit" disabled={submitDisabled}>
@@ -47,6 +55,11 @@ class New extends Component {
             </button>
           </div>
         </form>
+        {this.state.confirmation ? (
+          <div>
+            <p>Question successfully added!</p>
+          </div>
+        ) : null}
       </div>
     );
   }
