@@ -26,7 +26,7 @@ const QuestionItem = (props) => {
         <p className="question">{optionTwo.text}</p>
       </div>
       <Link to={`/question/${id}`}>
-        <button className="button view-btn">View</button>
+        <button className="button view-btn">{props.buttonText}</button>
       </Link>
     </div>
   );
@@ -34,6 +34,7 @@ const QuestionItem = (props) => {
 
 QuestionItem.propTypes = {
   item: PropTypes.object.isRequired,
+  buttonText: PropTypes.string.isRequired,
 };
 
 class QuestionList extends Component {
@@ -41,7 +42,11 @@ class QuestionList extends Component {
     return (
       <div className="list">
         {this.props.items.map((item) => (
-          <QuestionItem key={item.id} item={item} />
+          <QuestionItem
+            key={item.id}
+            item={item}
+            buttonText={this.props.buttonText}
+          />
         ))}
       </div>
     );
@@ -50,6 +55,7 @@ class QuestionList extends Component {
 
 QuestionList.propTypes = {
   items: PropTypes.array.isRequired,
+  buttonText: PropTypes.string.isRequired,
 };
 
 class Home extends Component {
@@ -65,6 +71,7 @@ class Home extends Component {
               items={questionList.filter(
                 (poll) => !isPollAnswered(poll, authedUser)
               )}
+              buttonText="Vote"
             />
           </div>
           <div label="Answered">
@@ -72,6 +79,7 @@ class Home extends Component {
               items={questionList.filter((poll) =>
                 isPollAnswered(poll, authedUser)
               )}
+              buttonText="View"
             />
           </div>
         </TabPanel>

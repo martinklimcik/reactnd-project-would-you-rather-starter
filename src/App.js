@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import * as Views from "./components/views";
 import NavBar from "./components/Navigation";
@@ -8,34 +8,26 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 /* TODO progress
-  ---features:
-  questions - show You instead of Name when author is authedUser
-  Show "Vote" instead of View on unanswered questions
-  test App render called on every view - get data from db on each view rerender (componentDidMount?)
-  direct url change
-  
   ---cleanup:
-  css - look
-  css - fix elements for resized(smaller) window
   imports cleanup
   todos cleanup
   console.logs cleanup
+  css - look
+  css - fix elements for resized(smaller) window
   testing https://review.udacity.com/#!/rubrics/1567/view
 */
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData()).then(() => {
-      console.group("App.componentDidMount");
-      console.log(this.props);
-      console.groupEnd();
-    });
+    this.props.dispatch(handleInitialData());
   }
 
   render() {
     return (
       <BrowserRouter>
-        {this.props.logged ? <NavBar /> : <Redirect to="/login" />}
+        <Switch>
+          <Route path="/" component={NavBar} />
+        </Switch>
         <div className="App">
           <Switch>
             <Route path="/login" component={Views.Login} />
@@ -53,13 +45,6 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  logged: PropTypes.bool.isRequired,
 };
 
-function mapStateToProps({ authedUser }) {
-  return {
-    logged: authedUser !== null,
-  };
-}
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);

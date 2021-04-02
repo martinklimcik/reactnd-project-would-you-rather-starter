@@ -61,16 +61,9 @@ const UnansweredQuestion = (props) => {
   return (
     <div className="view">
       <h1>Question View</h1>
-      {
-        /*props.author.id === currentuser.id ? (
-        <p>
-          You ({props.author.id}
-          ) have asked:
-        </p>
-      ) : */ <p>
-          <Avatar src={props.author.avatarURL} /> {props.author.name} asked:
-        </p>
-      }
+      <p>
+        <Avatar src={props.author.avatarURL} /> {props.author.name} asked:
+      </p>
       <p className="wyr">Would You Rather</p>
       <div className="question">
         <button className="button" onClick={() => handleAnswer("optionOne")}>
