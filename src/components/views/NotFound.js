@@ -1,5 +1,5 @@
-import { Component } from "react";
 import "./views.css";
+import { Component } from "react";
 
 // TODO: some info if possible (e.g. question)
 class NotFound extends Component {

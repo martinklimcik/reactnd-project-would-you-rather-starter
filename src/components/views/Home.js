@@ -1,14 +1,13 @@
+import "./views.css";
 import { Component } from "react";
 import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { isPollAnswered, sortQuestions } from "../../utils/helpers";
 import Avatar from "../Avatar";
 import TabPanel from "../TabPanel";
-import "./views.css";
 import PropTypes from "prop-types";
 
-// TODO: show when question was asked (parse from timestamp)
-// TODO: empty list
+// TODO: empty list - too long list
 const QuestionItem = (props) => {
   const users = useSelector((state) => state.users);
   const { author, optionOne, optionTwo, id } = props.item;

@@ -1,9 +1,9 @@
 import "./views.css";
-import NotFound from "./NotFound";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { handleAnswerQuestion } from "../../actions/questions";
 import { isPollAnswered, sortQuestions } from "../../utils/helpers";
-import { Link } from "react-router-dom";
+import NotFound from "./NotFound";
 import Avatar from "../Avatar";
 import PropTypes from "prop-types";
 

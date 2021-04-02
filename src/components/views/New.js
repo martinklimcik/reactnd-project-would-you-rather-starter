@@ -1,7 +1,7 @@
+import "./views.css";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { handleAddQuestion } from "../../actions/questions";
-import "./views.css";
 
 class New extends Component {
   state = { optionOne: "", optionTwo: "", confirmation: false };

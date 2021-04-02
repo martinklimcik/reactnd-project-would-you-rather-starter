@@ -1,9 +1,9 @@
-import { Component } from "react";
-import Dropdown from "../Dropdown";
 import "./views.css";
+import { Component } from "react";
 import { connect } from "react-redux";
-import { setAuthedUser } from "../../actions/authedUser";
 import { Redirect, withRouter } from "react-router";
+import { setAuthedUser } from "../../actions/authedUser";
+import Dropdown from "../Dropdown";
 import PropTypes from "prop-types";
 
 class Login extends Component {

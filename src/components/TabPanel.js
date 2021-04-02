@@ -25,7 +25,6 @@ class TabPanel extends Component {
   };
 
   render() {
-    //console.log(this.props);
     return (
       <div className="tab-panel">
         <div className="tab-buttons">

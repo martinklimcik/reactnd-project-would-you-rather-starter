@@ -1,5 +1,6 @@
-import { Component } from "react";
 import "./components.css";
+import { Component } from "react";
+import PropTypes from "prop-types";
 
 const DEFAULT = "_default";
 
@@ -24,5 +25,10 @@ class Dropdown extends Component {
     );
   }
 }
+
+Dropdown.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.array.isRequired,
+};
 
 export default Dropdown;

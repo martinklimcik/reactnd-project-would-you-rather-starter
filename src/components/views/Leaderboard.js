@@ -1,7 +1,7 @@
-import { Component } from "react";
-import TabPanel from "../TabPanel";
 import "./views.css";
+import { Component } from "react";
 import { connect } from "react-redux";
+import TabPanel from "../TabPanel";
 import Avatar from "../Avatar";
 import PropTypes from "prop-types";
 

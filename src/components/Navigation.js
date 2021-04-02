@@ -2,10 +2,10 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
-import Avatar from "./Avatar";
-import "./components.css";
-import PropTypes from "prop-types";
 import { setLoginRedirect } from "../actions/loginRedirect";
+import Avatar from "./Avatar";
+import PropTypes from "prop-types";
+import "./components.css";
 
 const NavButton = (props) => {
   return (

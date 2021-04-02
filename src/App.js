@@ -1,15 +1,14 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
-import * as Views from "./components/views";
-import NavBar from "./components/Navigation";
 import { Component } from "react";
-import { handleInitialData } from "./actions/init";
 import { connect } from "react-redux";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { handleInitialData } from "./actions/init";
+import NavBar from "./components/Navigation";
+import * as Views from "./components/views";
 import PropTypes from "prop-types";
 
 /* TODO progress
   ---cleanup:
-  imports cleanup
   todos cleanup
   console.logs cleanup
   css - look
