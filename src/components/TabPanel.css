@@ -6,6 +6,7 @@
 	border-style: solid;
 	border-radius: 6px;
 	background: #00203FFF;
+	min-width: 300px;
 }
 
 .tab-content {

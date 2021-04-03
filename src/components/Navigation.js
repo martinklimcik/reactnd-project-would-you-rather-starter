@@ -36,7 +36,6 @@ class NavBar extends Component {
           <NavButton to="/">Home</NavButton>
           <NavButton to="/new">Create</NavButton>
           <NavButton to="/leaderboard">Leader Board</NavButton>
-          {/* TODO: Separate navigation buttons from user info and logout button */}
           <div className="nav user">
             <Avatar src={user.avatarURL} />
             {user.name}

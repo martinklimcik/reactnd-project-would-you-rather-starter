@@ -25,7 +25,7 @@ button {
 button.submit {
   background-color: #2BAE66FF;
 	width: 40%;
-	height: 40px;
+	min-height: 40px;
 	text-transform: uppercase;
   color: #FCF6F5FF;
   text-decoration: none;
@@ -36,12 +36,13 @@ button.submit {
   margin-top: 15px;
   margin-bottom: 15px;
   border-radius: 8px;
-
+  height:fit-content;
 }
 
 button.view {
   width: 80%;
-  height: 40px;
+  min-height: 40px;
+  height:fit-content;
   background-color: #00539CFF;
   border-color:#FFD662FF;
   color: white;
@@ -53,7 +54,8 @@ button.view {
 }
 
 button.vote {
-  height: 80px;
+  height:fit-content;
+  min-height: 80px;
 }
 
 button.vote:hover {

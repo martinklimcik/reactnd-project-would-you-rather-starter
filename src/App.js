@@ -8,8 +8,6 @@ import * as Views from "./components/views";
 import PropTypes from "prop-types";
 
 /* TODO progress
-  css - fix elements for resized(smaller) window
-  todos cleanup
   testing https://review.udacity.com/#!/rubrics/1567/view
 */
 

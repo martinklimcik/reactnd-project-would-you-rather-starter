@@ -35,7 +35,6 @@ class Login extends Component {
             onChange={this.handleSelection}
           />
           <div>
-            {/* TODO: disabled visual */}
             <button
               className="submit"
               type="submit"
