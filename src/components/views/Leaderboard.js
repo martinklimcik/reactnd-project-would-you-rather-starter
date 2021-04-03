@@ -47,8 +47,10 @@ class LeaderBoard extends Component {
     return (
       <div className="view">
         <h1>LeaderBoard</h1>
-
         <TabPanel>
+          <div label="By total">
+            <UserList users={this.props.listByTotal} />
+          </div>
           <div label="By Answered Questions">
             <UserList users={this.props.listByAnswers} />
           </div>
@@ -71,6 +73,7 @@ function mapStateToProps({ users, authedUser }) {
   // Then sort them accordingly
   let listByAnswers = [];
   let listByQuestions = [];
+  let listByTotal = [];
   for (const item in users) {
     const _user = users[item];
     const new_user = {
@@ -83,11 +86,15 @@ function mapStateToProps({ users, authedUser }) {
     };
     listByAnswers.push(new_user);
     listByQuestions.push(new_user);
+    listByTotal.push(new_user);
   }
   listByAnswers.sort((a, b) => b.answers - a.answers);
   listByQuestions.sort((a, b) => b.questions - a.questions);
+  listByTotal.sort(
+    (a, b) => b.questions + b.answers - (a.questions + a.answers)
+  );
 
-  return { listByAnswers, listByQuestions };
+  return { listByAnswers, listByQuestions, listByTotal };
 }
 
 export default connect(mapStateToProps)(LeaderBoard);

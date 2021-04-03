@@ -11,6 +11,6 @@ export function sortQuestions(questions) {
   for (const id in questions) {
     questionList.push(questions[id]);
   }
-  questionList.sort((a, b) => a.timestamp - b.timestamp);
+  questionList.sort((a, b) => b.timestamp - a.timestamp);
   return questionList;
 }

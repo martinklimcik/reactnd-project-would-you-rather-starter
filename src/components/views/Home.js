@@ -23,7 +23,7 @@ const QuestionItem = (props) => {
         <span className="question-label">OR</span>
         <p className="question">{optionTwo.text}</p>
       </div>
-      <Link to={`/question/${id}`}>
+      <Link to={`/questions/${id}`}>
         <button className="view">{props.buttonText}</button>
       </Link>
     </div>
@@ -41,7 +41,7 @@ const PaginationButtons = (props) => {
       {props.pageNumbers.map((page) => (
         <button
           key={page}
-          class={props.currentPage === page ? "active" : ""}
+          className={props.currentPage === page ? "active" : ""}
           onClick={() => props.changePage(page)}
         >
           {page}

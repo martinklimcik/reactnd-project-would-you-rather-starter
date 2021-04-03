@@ -20,30 +20,32 @@ const AnsweredQuestion = (props) => {
         </p>
         <div className="question-label">Would You Rather</div>
         <table className="question-row">
-          <tr>
-            <td
-              className={`question-data${
-                props.answer === "optionOne" ? " user-answer" : ""
-              }`}
-            >
-              <p className="question">{props.question.optionOne.text}</p>
-              <div>
-                {votesA} users chose this answer (
-                {Math.round((votesA / totalVotes) * 100)}%)
-              </div>
-            </td>
-            <td
-              className={`question-data${
-                props.answer === "optionTwo" ? " user-answer" : ""
-              }`}
-            >
-              <p className="question">{props.question.optionTwo.text}</p>
-              <div>
-                {votesB} users chose this answer (
-                {Math.round((votesB / totalVotes) * 100)}%)
-              </div>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td
+                className={`question-data${
+                  props.answer === "optionOne" ? " user-answer" : ""
+                }`}
+              >
+                <p className="question">{props.question.optionOne.text}</p>
+                <div>
+                  {votesA} users chose this answer (
+                  {Math.round((votesA / totalVotes) * 100)}%)
+                </div>
+              </td>
+              <td
+                className={`question-data${
+                  props.answer === "optionTwo" ? " user-answer" : ""
+                }`}
+              >
+                <p className="question">{props.question.optionTwo.text}</p>
+                <div>
+                  {votesB} users chose this answer (
+                  {Math.round((votesB / totalVotes) * 100)}%)
+                </div>
+              </td>
+            </tr>
+          </tbody>
         </table>
         <div className="next-question">
           {props.nextQuestionId == null ? (
@@ -51,7 +53,7 @@ const AnsweredQuestion = (props) => {
               You have answered all available questions!
             </button>
           ) : (
-            <Link to={`/question/${props.nextQuestionId}`}>
+            <Link to={`/questions/${props.nextQuestionId}`}>
               <button className="view">Answer another question</button>
             </Link>
           )}
@@ -132,7 +134,7 @@ const Poll = (props) => {
 };
 
 Poll.propTypes = {
-  question: PropTypes.object.isRequired,
+  question: PropTypes.object,
   author: PropTypes.object,
   answer: PropTypes.string,
   nextQuestionId: PropTypes.string,

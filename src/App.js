@@ -25,9 +25,9 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route path="/login" component={Views.Login} />
-            <Route path="/new" component={Views.New} />
+            <Route path="/add" component={Views.New} />
             <Route path="/leaderboard" component={Views.LeaderBoard} />
-            <Route path="/question/:id" component={Views.Poll} />
+            <Route path="/questions/:id" component={Views.Poll} />
             <Route exact path="/" component={Views.Home} />
             <Route path="*" component={Views.NotFound} />
           </Switch>

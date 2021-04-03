@@ -34,7 +34,7 @@ class NavBar extends Component {
       return (
         <nav>
           <NavButton to="/">Home</NavButton>
-          <NavButton to="/new">Create</NavButton>
+          <NavButton to="/add">Create</NavButton>
           <NavButton to="/leaderboard">Leader Board</NavButton>
           <div className="nav user">
             <Avatar src={user.avatarURL} />

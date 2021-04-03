@@ -1,9 +1,10 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
 import { handleAddQuestion } from "../../actions/questions";
 
 class New extends Component {
-  state = { optionOne: "", optionTwo: "", confirmation: false };
+  state = { optionOne: "", optionTwo: "", redirect: false };
 
   handleOptionOne = (e) => {
     this.setState({ optionOne: e.target.value });
@@ -15,18 +16,13 @@ class New extends Component {
     e.preventDefault();
     const { optionOne, optionTwo } = this.state;
     const { dispatch } = this.props;
-    dispatch(handleAddQuestion(optionOne, optionTwo)).then(() => {
-      this.setState({ confirmation: true });
-      this.confirmationTimeout();
-    });
-    this.setState({ optionOne: "", optionTwo: "" });
-  };
-
-  confirmationTimeout = () => {
-    setTimeout(() => this.setState({ confirmation: false }), 2000);
+    dispatch(handleAddQuestion(optionOne, optionTwo));
+    this.setState({ optionOne: "", optionTwo: "", redirect: true });
   };
 
   render() {
+    if (this.state.redirect) return <Redirect to="/" />;
+
     const submitDisabled =
       this.state.optionOne === "" || this.state.optionTwo === "";
     return (
@@ -58,11 +54,6 @@ class New extends Component {
               </button>
             </div>
           </form>
-          {this.state.confirmation ? (
-            <div>
-              <p>Question successfully added!</p>
-            </div>
-          ) : null}
         </div>
       </div>
     );
