@@ -36,17 +36,66 @@ QuestionItem.propTypes = {
   buttonText: PropTypes.string.isRequired,
 };
 
+const PaginationButtons = (props) => {
+  return (
+    <div>
+      {props.pageNumbers.map((page) => (
+        <button key={page} onClick={() => props.changePage(page)}>
+          {page}
+        </button>
+      ))}
+    </div>
+  );
+};
+
+PaginationButtons.propTypes = {
+  pageNumbers: PropTypes.array.isRequired,
+  changePage: PropTypes.func.isRequired,
+};
+
 class QuestionList extends Component {
+  state = { currentPage: 1 };
+
+  changePage = (toPage) => {
+    this.setState({ currentPage: toPage });
+  };
+
   render() {
+    const itemsPerPage = 10;
+    const lastIndex = this.state.currentPage * itemsPerPage;
+    const firstIndex = lastIndex - itemsPerPage;
+    const currentList = this.props.items.slice(firstIndex, lastIndex);
+
+    const pageNumbers = [];
+    for (
+      let i = 1;
+      i <= Math.ceil(this.props.items.length / itemsPerPage);
+      i++
+    ) {
+      pageNumbers.push(i);
+    }
+
     return (
       <div className="list">
-        {this.props.items.map((item) => (
-          <QuestionItem
-            key={item.id}
-            item={item}
-            buttonText={this.props.buttonText}
-          />
-        ))}
+        <PaginationButtons
+          pageNumbers={pageNumbers}
+          changePage={this.changePage}
+        />
+        {currentList.length == 0 ? (
+          <p>{this.props.emptyMessage}</p>
+        ) : (
+          currentList.map((item) => (
+            <QuestionItem
+              key={item.id}
+              item={item}
+              buttonText={this.props.buttonText}
+            />
+          ))
+        )}
+        <PaginationButtons
+          pageNumbers={pageNumbers}
+          changePage={this.changePage}
+        />
       </div>
     );
   }
@@ -71,6 +120,7 @@ class Home extends Component {
                 (poll) => !isPollAnswered(poll, authedUser)
               )}
               buttonText="Vote"
+              emptyMessage="You have answered all questions!"
             />
           </div>
           <div label="Answered">
@@ -79,6 +129,7 @@ class Home extends Component {
                 isPollAnswered(poll, authedUser)
               )}
               buttonText="View"
+              emptyMessage="You haven't answered any question yet!"
             />
           </div>
         </TabPanel>
