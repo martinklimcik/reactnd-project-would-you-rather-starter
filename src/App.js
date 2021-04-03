@@ -7,10 +7,6 @@ import NavBar from "./components/Navigation";
 import * as Views from "./components/views";
 import PropTypes from "prop-types";
 
-/* TODO progress
-  testing https://review.udacity.com/#!/rubrics/1567/view
-*/
-
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());

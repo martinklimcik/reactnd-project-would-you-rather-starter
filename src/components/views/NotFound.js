@@ -1,4 +1,3 @@
-//import "./views.css";
 import { Component } from "react";
 
 class NotFound extends Component {
