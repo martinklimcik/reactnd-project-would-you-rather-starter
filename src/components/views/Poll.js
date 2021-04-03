@@ -1,4 +1,4 @@
-import "./views.css";
+import "./Poll.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { handleAnswerQuestion } from "../../actions/questions";
@@ -13,32 +13,49 @@ const AnsweredQuestion = (props) => {
   const totalVotes = votesA + votesB;
   return (
     <div className="view">
-      <h1>Question View</h1>
-      <p>
-        Author: <Avatar src={props.author.avatarURL} /> {props.author.name}
-      </p>
-      <p className="question">Option A: {props.question.optionOne.text}</p>
-      <div>
-        Answered {votesA} of {totalVotes} ({(votesA / totalVotes) * 100}%)
-      </div>
-      <div>
-        This was {props.answer !== "optionOne" ? "NOT" : ""} your answer
-      </div>
-      <p className="question">Option B: {props.question.optionTwo.text}</p>
-      <div>
-        Answered {votesB} of {totalVotes} ({(votesB / totalVotes) * 100}%)
-      </div>
-      <div>
-        This was {props.answer !== "optionTwo" ? "NOT" : ""} your answer
-      </div>
-      <div>
-        {props.nextQuestionId == null ? (
-          <p>All questions Answered!</p>
-        ) : (
-          <Link to={`/question/${props.nextQuestionId}`}>
-            <button className="button">Answer another question</button>
-          </Link>
-        )}
+      <h1>Answered question</h1>
+      <div className="list-item">
+        <p className="user-info">
+          Created by {props.author.name} <Avatar src={props.author.avatarURL} />
+        </p>
+        <div className="question-label">Would You Rather</div>
+        <table className="question-row">
+          <tr>
+            <td
+              className={`question-data${
+                props.answer === "optionOne" ? " user-answer" : ""
+              }`}
+            >
+              <p className="question">{props.question.optionOne.text}</p>
+              <div>
+                {votesA} users chose this answer (
+                {Math.round((votesA / totalVotes) * 100)}%)
+              </div>
+            </td>
+            <td
+              className={`question-data${
+                props.answer === "optionTwo" ? " user-answer" : ""
+              }`}
+            >
+              <p className="question">{props.question.optionTwo.text}</p>
+              <div>
+                {votesB} users chose this answer (
+                {Math.round((votesB / totalVotes) * 100)}%)
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div className="next-question">
+          {props.nextQuestionId == null ? (
+            <button disabled className="view">
+              You have answered all available questions!
+            </button>
+          ) : (
+            <Link to={`/question/${props.nextQuestionId}`}>
+              <button className="view">Answer another question</button>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -60,21 +77,29 @@ const UnansweredQuestion = (props) => {
 
   return (
     <div className="view">
-      <h1>Question View</h1>
-      <p>
-        <Avatar src={props.author.avatarURL} /> {props.author.name} asked:
-      </p>
-      <p className="wyr">Would You Rather</p>
-      <div className="question">
-        <button className="button" onClick={() => handleAnswer("optionOne")}>
-          {props.question.optionOne.text}
-        </button>
-      </div>
-      <p className="wyr">OR</p>
-      <div className="question">
-        <button className="button" onClick={() => handleAnswer("optionTwo")}>
-          {props.question.optionTwo.text}
-        </button>
+      <h1>Answer Question</h1>
+      <div className="list-item">
+        <p className="user-info">
+          <Avatar src={props.author.avatarURL} /> {props.author.name} asked:
+        </p>
+        <p className="question-label">Would You Rather</p>
+        <div className="question">
+          <button
+            className="view vote"
+            onClick={() => handleAnswer("optionOne")}
+          >
+            {props.question.optionOne.text}
+          </button>
+        </div>
+        <p className="question-label">OR</p>
+        <div className="question">
+          <button
+            className="view vote"
+            onClick={() => handleAnswer("optionTwo")}
+          >
+            {props.question.optionTwo.text}
+          </button>
+        </div>
       </div>
     </div>
   );

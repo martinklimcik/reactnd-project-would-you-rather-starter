@@ -1,4 +1,4 @@
-import "./views.css";
+import "./Login.css";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router";
@@ -37,7 +37,7 @@ class Login extends Component {
           <div>
             {/* TODO: disabled visual */}
             <button
-              className="button submit"
+              className="submit"
               type="submit"
               disabled={this.state.selectedUser == null}
             >
@@ -57,7 +57,8 @@ Login.propTypes = {
 function mapStateToProps({ users, loginRedirect }) {
   let userList = [];
   for (const userId in users) {
-    userList.push({ label: users[userId].name, value: users[userId].id });
+    const _user = users[userId];
+    userList.push({ label: _user.name, value: _user.id, img: _user.avatarURL });
   }
   return { users: userList, loginRedirect };
 }

@@ -1,4 +1,4 @@
-import "./views.css";
+import "./Home.css";
 import { Component } from "react";
 import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,25 +7,24 @@ import Avatar from "../Avatar";
 import TabPanel from "../TabPanel";
 import PropTypes from "prop-types";
 
-// TODO: empty list - too long list
 const QuestionItem = (props) => {
   const users = useSelector((state) => state.users);
   const { author, optionOne, optionTwo, id } = props.item;
 
   return (
     <div className="list-item">
-      <div>
+      <div className="user-info">
         <Avatar src={users[author].avatarURL} />
-        {users[author].name} asks
+        {users[author].name} asks:
       </div>
       <div>
-        <span className="wyr">Would You Rather</span>
+        <span className="question-label">Would You Rather</span>
         <p className="question">{optionOne.text}</p>
-        <span>OR</span>
+        <span className="question-label">OR</span>
         <p className="question">{optionTwo.text}</p>
       </div>
       <Link to={`/question/${id}`}>
-        <button className="button view-btn">{props.buttonText}</button>
+        <button className="view">{props.buttonText}</button>
       </Link>
     </div>
   );
@@ -37,10 +36,14 @@ QuestionItem.propTypes = {
 };
 
 const PaginationButtons = (props) => {
-  return (
-    <div>
+  return props.pageNumbers.length === 1 ? null : (
+    <div className="pagination">
       {props.pageNumbers.map((page) => (
-        <button key={page} onClick={() => props.changePage(page)}>
+        <button
+          key={page}
+          class={props.currentPage === page ? "active" : ""}
+          onClick={() => props.changePage(page)}
+        >
           {page}
         </button>
       ))}
@@ -51,6 +54,7 @@ const PaginationButtons = (props) => {
 PaginationButtons.propTypes = {
   pageNumbers: PropTypes.array.isRequired,
   changePage: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 class QuestionList extends Component {
@@ -80,9 +84,10 @@ class QuestionList extends Component {
         <PaginationButtons
           pageNumbers={pageNumbers}
           changePage={this.changePage}
+          currentPage={this.state.currentPage}
         />
-        {currentList.length == 0 ? (
-          <p>{this.props.emptyMessage}</p>
+        {currentList.length === 0 ? (
+          <p className="white-text">{this.props.emptyMessage}</p>
         ) : (
           currentList.map((item) => (
             <QuestionItem
@@ -95,6 +100,7 @@ class QuestionList extends Component {
         <PaginationButtons
           pageNumbers={pageNumbers}
           changePage={this.changePage}
+          currentPage={this.state.currentPage}
         />
       </div>
     );
@@ -104,6 +110,7 @@ class QuestionList extends Component {
 QuestionList.propTypes = {
   items: PropTypes.array.isRequired,
   buttonText: PropTypes.string.isRequired,
+  emptyMessage: PropTypes.string.isRequired,
 };
 
 class Home extends Component {
@@ -112,7 +119,7 @@ class Home extends Component {
 
     return (
       <div className="view">
-        <h1>Home View</h1>
+        <h1>Home</h1>
         <TabPanel>
           <div label="Unanswered">
             <QuestionList

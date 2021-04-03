@@ -5,7 +5,7 @@ import { setAuthedUser } from "../actions/authedUser";
 import { setLoginRedirect } from "../actions/loginRedirect";
 import Avatar from "./Avatar";
 import PropTypes from "prop-types";
-import "./components.css";
+import "./Navigation.css";
 
 const NavButton = (props) => {
   return (

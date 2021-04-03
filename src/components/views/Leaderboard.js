@@ -1,4 +1,4 @@
-import "./views.css";
+import "./Leaderboard.css";
 import { Component } from "react";
 import { connect } from "react-redux";
 import TabPanel from "../TabPanel";
@@ -6,18 +6,18 @@ import Avatar from "../Avatar";
 import PropTypes from "prop-types";
 
 const UserItem = (props) => {
-  // TODO: pagination
+  let cls = "list-item user-item";
+  cls += props.user.current ? " current-user" : "";
   return (
-    <div className="list-item user-item">
-      {props.user.current ? <div>CURRENT USER</div> : null}
-      <div>{props.rank}</div>
+    <div className={cls}>
+      <div className="user-item-rank">{props.rank}</div>
       <div className="user-item-name">
         <Avatar src={props.user.avatarURL} />
         {props.user.name}
       </div>
       <div className="user-item-data">
-        <div>Answered questions: {props.user.answers}</div>
-        <div>Created questions: {props.user.questions}</div>
+        <div>Answered: {props.user.answers}</div>
+        <div>Created: {props.user.questions}</div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
-import "./components.css";
+import "./Avatar.css";
 
 const Avatar = (props) => {
-  return <img src={props.src} alt="<Avatar icon>" width="60" height="60"></img>;
+  return <img src={props.src} alt="<Avatar icon>" className="avatar"></img>;
 };
 
 export default Avatar;

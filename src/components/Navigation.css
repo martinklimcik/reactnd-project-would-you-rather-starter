@@ -1,0 +1,42 @@
+nav {
+	margin: 9px auto 0;
+	position: relative;
+	width: 60%;
+	height: 50px;
+	border-radius: 8px;
+	font-size: 0;
+}
+
+nav .nav {
+    line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: center;
+	color: white;
+    width: 20%;
+	border-radius: 8px;
+}
+
+nav .btn {
+	background-color: #34495e;
+    cursor: pointer;
+}
+
+nav .user {
+	background-color: white;
+	color: #34495e;
+	margin: inherit;
+}
+
+nav .active {
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+    background-color: #3498db;
+}

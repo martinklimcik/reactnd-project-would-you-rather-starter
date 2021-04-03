@@ -1,0 +1,24 @@
+.tab-panel {
+	width: 70%;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	border-style: solid;
+	border-radius: 6px;
+	background: #00203FFF;
+}
+
+.tab-content {
+	border-style: solid;
+	border-radius: 6px;
+}
+
+.tab-buttons {
+	display: flex;
+  	flex-direction: row;
+	height: 30px;
+}
+
+.tab-button {
+	width: 100%;
+}

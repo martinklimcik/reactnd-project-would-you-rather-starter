@@ -1,0 +1,20 @@
+.question-row {
+    width: 100%;
+    table-layout: fixed
+}
+
+.question.data {
+    width: 50%;
+}
+
+.user-answer {
+    background: radial-gradient(ellipse at center, #ddedff 80%, #3498db);
+    border-width: 3px;
+    border-color: #3498db;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.next-question {
+    margin-top: 30px;
+}

@@ -1,0 +1,31 @@
+.user-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.current-user {
+    background: radial-gradient(ellipse at center, #ddedff 80%, #3498db);
+    border-width: 3px;
+    border-color: #3498db;
+}
+
+.user-item-name {
+    width: 40%;
+    text-align: left;
+}
+
+.user-item-data {
+    text-align: right;
+    margin-right: 8px;
+    padding-top: 5px;
+    width:40%;
+}
+
+.user-item-rank {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 8px;
+    padding-top: 15px;
+    width: 10%;
+}

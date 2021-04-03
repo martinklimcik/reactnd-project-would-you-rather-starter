@@ -1,9 +1,9 @@
 import { Component } from "react";
-import "./components.css";
+import "./TabPanel.css";
 
 const TabButton = (props) => {
   let cls = "button tab-button";
-  if (props.active) cls += " tab-active";
+  if (props.active) cls += " active";
   return (
     <button
       className={cls}

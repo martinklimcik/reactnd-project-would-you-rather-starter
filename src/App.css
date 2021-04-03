@@ -1,5 +1,145 @@
 .App {
   width: 50%;
   position: absolute;
-  left: 25%
+  left: 25%;
+  font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+}
+
+.view {
+  position: relative;
+  align-content: center;
+  text-align: center;
+}
+
+button {
+	background-color: #00203FFF;
+	cursor: pointer;
+	text-transform: capitalize;
+	text-align: center;
+	color: white;
+	height: 100%;
+	border-radius: 4px;
+	border-style:ridge;
+}
+
+button.submit {
+  background-color: #2BAE66FF;
+	width: 40%;
+	height: 40px;
+	text-transform: uppercase;
+  color: #FCF6F5FF;
+  text-decoration: none;
+  font-size: 120%;
+  display: inline-block;
+  text-transform: uppercase;
+  border: 2px solid #FCF6F5FF;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+
+}
+
+button.view {
+  width: 80%;
+  height: 40px;
+  background-color: #00539CFF;
+  border-color:#FFD662FF;
+  color: white;
+  text-decoration: none;
+  font-size: 120%;
+  border: 2px solid #FCF6F5FF;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+button.vote {
+  height: 80px;
+}
+
+button.vote:hover {
+  transition: all .5s ease 0s;
+  border-radius: 15px;
+  background-color: #2BAE66FF;
+  color: #FCF6F5FF;
+}
+
+button.vote:default {
+  transition: all .5s ease 0s;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor:default;
+}
+
+button.active{
+  top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+  background-color: #3498db;
+}
+
+.input {
+  font-family: inherit;
+  width: 65%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  text-indent: 0.5;
+  font-size: 20px;
+  font-style:oblique;
+  color: rgb(0, 0, 150);
+  padding: 7px 0;
+  transition: border-color 0.2s;
+  background-color: inherit;
+}
+.input::placeholder {
+  color: #9b9b9b;
+}
+
+.input:focus {
+  padding-bottom: 3px;
+  color:rgb(0, 0, 150);
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+}
+
+.list {
+	height: 100%;
+    background: #00203FFF;
+}
+
+.list-item {
+  border-style: solid;
+  border-width: 2px;
+  border-spacing: 5px;
+  padding: 10px;
+  background: #ddedf8;
+  border-radius: 10px;
+}
+
+.question {
+  text-indent: 0.5;
+  font-size: 20px;
+  font-style:oblique;
+  color:rgb(0, 0, 150)
+}
+
+.question-label {
+  font-style:italic;
+  font-size: 18px
+}
+
+.user-info {
+  text-align: left;
+  padding-left: 10%;
+}
+
+.white-text {
+  color: white
 }
