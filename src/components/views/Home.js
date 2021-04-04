@@ -31,8 +31,8 @@ const QuestionItem = (props) => {
 };
 
 QuestionItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  buttonText: PropTypes.string.isRequired,
+  item: PropTypes.object,
+  buttonText: PropTypes.string,
 };
 
 const PaginationButtons = (props) => {
@@ -52,9 +52,9 @@ const PaginationButtons = (props) => {
 };
 
 PaginationButtons.propTypes = {
-  pageNumbers: PropTypes.array.isRequired,
-  changePage: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
+  pageNumbers: PropTypes.array,
+  changePage: PropTypes.func,
+  currentPage: PropTypes.number,
 };
 
 class QuestionList extends Component {
@@ -108,9 +108,9 @@ class QuestionList extends Component {
 }
 
 QuestionList.propTypes = {
-  items: PropTypes.array.isRequired,
-  buttonText: PropTypes.string.isRequired,
-  emptyMessage: PropTypes.string.isRequired,
+  items: PropTypes.array,
+  buttonText: PropTypes.string,
+  emptyMessage: PropTypes.string,
 };
 
 class Home extends Component {
@@ -146,7 +146,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  questionList: PropTypes.array.isRequired,
+  questionList: PropTypes.array,
   authedUser: PropTypes.string,
 };
 

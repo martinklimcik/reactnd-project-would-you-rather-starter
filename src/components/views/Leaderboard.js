@@ -24,7 +24,7 @@ const UserItem = (props) => {
 };
 
 UserItem.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   rank: PropTypes.number,
 };
 
@@ -39,7 +39,7 @@ const UserList = (props) => {
 };
 
 UserList.propTypes = {
-  users: PropTypes.array.isRequired,
+  users: PropTypes.array,
 };
 
 class LeaderBoard extends Component {
@@ -64,8 +64,8 @@ class LeaderBoard extends Component {
 }
 
 LeaderBoard.propTypes = {
-  listByAnswers: PropTypes.array.isRequired,
-  listByQuestions: PropTypes.array.isRequired,
+  listByAnswers: PropTypes.array,
+  listByQuestions: PropTypes.array,
 };
 
 function mapStateToProps({ users, authedUser }) {

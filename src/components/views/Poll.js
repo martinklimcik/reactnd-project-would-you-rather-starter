@@ -64,11 +64,11 @@ const AnsweredQuestion = (props) => {
 };
 
 AnsweredQuestion.propTypes = {
-  question: PropTypes.object.isRequired,
-  author: PropTypes.object.isRequired,
-  answer: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  nextQuestionId: PropTypes.string.isRequired,
+  question: PropTypes.object,
+  author: PropTypes.object,
+  answer: PropTypes.string,
+  dispatch: PropTypes.func,
+  nextQuestionId: PropTypes.string,
 };
 
 const UnansweredQuestion = (props) => {
@@ -108,9 +108,9 @@ const UnansweredQuestion = (props) => {
 };
 
 UnansweredQuestion.propTypes = {
-  question: PropTypes.object.isRequired,
-  author: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  question: PropTypes.object,
+  author: PropTypes.object,
+  dispatch: PropTypes.func,
 };
 
 const Poll = (props) => {

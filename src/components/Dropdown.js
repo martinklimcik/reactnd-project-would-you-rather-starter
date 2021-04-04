@@ -27,8 +27,8 @@ class Dropdown extends Component {
 }
 
 Dropdown.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.array.isRequired,
+  onChange: PropTypes.func,
+  options: PropTypes.array,
 };
 
 export default Dropdown;

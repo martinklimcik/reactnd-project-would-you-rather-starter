@@ -50,7 +50,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  users: PropTypes.array.isRequired,
+  users: PropTypes.array,
 };
 
 function mapStateToProps({ users, loginRedirect }) {
